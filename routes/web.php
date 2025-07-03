@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Livewire\Projects\Show;
+use App\Livewire\Projects\Create;
+use App\Livewire\Projects\Edit;
 
 Route::get('/', function () {
     return view('welcome');
@@ -9,7 +12,9 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
-    Route::view('create-project', 'create-project')->name('create-project');
+    Route::get('/create-project', Create::class)->name('create-project');
+    Route::get('/project/{id}', Show::class)->name('projects.show');
+    Route::get('/edit-project/{id}', Edit::class)->name('projects.edit');
 });
 
 Route::middleware(['auth'])->group(function () {

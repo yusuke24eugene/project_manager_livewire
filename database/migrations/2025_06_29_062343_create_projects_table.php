@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description')->nullabel();
+            $table->text('description')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->date('start');
             $table->date('deadline');
+            $table->enum('status', ['todo', 'in_progress', 'done'])->default('todo');
             $table->timestamps();
         });
     }

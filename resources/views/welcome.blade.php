@@ -66,11 +66,11 @@
                     today.
                 </p>
                 <div class="mt-8">
-                    <a href="#signup"
+                    <a href="{{ route('register') }}"
                         class="bg-yellow-500 text-gray-800 font-semibold py-3 px-6 rounded-md hover:bg-yellow-600 transition duration-300">
                         Get Started
                     </a>
-                    <a href="#features"
+                    <a href="{{ route('dashboard') }}"
                         class="ml-4 text-white font-semibold py-3 px-6 rounded-md border border-white hover:bg-white hover:text-gray-800 transition duration-300">
                         Explore Features
                     </a>

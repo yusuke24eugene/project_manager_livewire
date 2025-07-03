@@ -35,9 +35,7 @@ class Create extends Component
             'deadline' => $this->deadline
         ]);
 
-        $this->reset();
-
-        session()->flash('message', 'Record successfully created!');
+        $this->redirect('/dashboard', navigate: true);
     }
 
     public function render()
