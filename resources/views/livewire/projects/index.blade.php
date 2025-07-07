@@ -26,12 +26,12 @@
                         </td>
                         <td class="px-4 py-2 border">
                             <a href="{{ route('projects.show', $project->id) }}" class="block w-full h-full">
-                                {{ $project->start }}
+                                {{ \Carbon\Carbon::parse($project->start)->format('F d, Y') }}
                             </a>
                         </td>
                         <td class="px-4 py-2 border">
                             <a href="{{ route('projects.show', $project->id) }}" class="block w-full h-full">
-                                {{ $project->deadline }}
+                                {{ \Carbon\Carbon::parse($project->deadline)->format('F d, Y') }}
                             </a>
                         </td>
                         <td class="px-4 py-2 border">

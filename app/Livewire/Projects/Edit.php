@@ -17,10 +17,10 @@ class Edit extends Component
     #[Rule('required|string|min:3|max:500')]
     public $description;
 
-    #[Rule('required|date')]
+    #[Rule('required|date|after_or_equal:today')]
     public $start;
 
-    #[Rule('required|date')]
+    #[Rule('required|date|after_or_equal:today|after_or_equal:start')]
     public $deadline;
 
     #[Rule('required|in:todo,in_progress,done')]
