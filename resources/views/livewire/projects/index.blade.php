@@ -36,7 +36,15 @@
                         </td>
                         <td class="px-4 py-2 border">
                             <a href="{{ route('projects.show', $project->id) }}" class="block w-full h-full">
-                                {{ $project->status }}
+                                @if ($project->status === 'todo')
+                                    <span class="text-gray-500">To Do</span>
+                                @elseif ($project->status === 'in_progress')
+                                    <span class="text-blue-500">In Progress</span>
+                                @elseif ($project->status === 'done')
+                                    <span class="text-green-600 font-semibold">Done</span>
+                                @else
+                                    <span class="text-red-500">Unknown</span>
+                                @endif
                             </a>
                         </td>
                     </tr>

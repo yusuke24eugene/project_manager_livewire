@@ -7,6 +7,15 @@
         <div class="mt-4">
             <strong>Start Date:</strong> {{ \Carbon\Carbon::parse($project->start)->format('F d, Y') }}<br>
             <strong>Deadline:</strong> {{ \Carbon\Carbon::parse($project->deadline)->format('F d, Y') }}<br>
+            <strong>Status:</strong> @if ($project->status === 'todo')
+                                        <span class="text-gray-500">To Do</span>
+                                    @elseif ($project->status === 'in_progress')
+                                        <span class="text-blue-500">In Progress</span>
+                                    @elseif ($project->status === 'done')
+                                        <span class="text-green-600 font-semibold">Done</span>
+                                    @else
+                                        <span class="text-red-500">Unknown</span>
+                                    @endif<br>
             <strong>Owner:</strong> {{ $project->user->name ?? 'Unknown' }}
         </div>
     </div>
@@ -17,12 +26,12 @@
             Edit
         </a>
 
-        <form wire:submit.prevent="deleteProject" class="w-full">
-            <button type="submit"
+        <form wire:submit.prevent="delete" class="w-full">
+            <button onclick="confirm('Are you sure you want to delete?') || event.stopImmediatePropagation()"
+                    wire:click="delete({{ $project->id }})"
                     class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-full">
                 Delete
             </button>
         </form>
     </div>
-
 </div>

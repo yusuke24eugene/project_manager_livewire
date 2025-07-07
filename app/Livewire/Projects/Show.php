@@ -9,6 +9,13 @@ class Show extends Component
 {
     public $project;
 
+    public function delete(Project $project)
+    {
+        $project->delete();
+
+        $this->redirect('/dashboard', navigate: true);
+    }
+
     public function mount($id)
     {
         $this->project = Project::with('user')->findOrFail($id);
