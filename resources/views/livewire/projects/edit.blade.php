@@ -1,5 +1,5 @@
 <div class="container mx-auto p-6">
-    <h1 class="text-2xl font-semibold mb-6">Create a New Project</h1>
+    <h1 class="text-2xl font-semibold mb-6">Update a Project</h1>
 
     <!-- Success Message -->
     @if (session()->has('message'))
@@ -62,7 +62,7 @@
         <!-- Submit Button -->
         <div class="mt-4">
             <button type="submit" class="w-full py-3 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                Create Project
+                Update Project
             </button>
         </div>
     </form>
