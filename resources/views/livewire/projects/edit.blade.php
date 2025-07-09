@@ -49,7 +49,7 @@
         <!-- Status -->
         <div class="flex flex-col">
             <label for="status" class="text-sm font-semibold text-gray-700">Status</label>
-            <select type="date" wire:model="status" id="status" class="mt-1 p-3 border border-gray-300 rounded-lg @error('status') border-red-500 @enderror">
+            <select type="text" wire:model="status" id="status" class="mt-1 p-3 border border-gray-300 rounded-lg @error('status') border-red-500 @enderror">
                 <option value="todo">To Do</option>
                 <option value="in_progress">In Progress</option>
                 <option value="done">Done</option>
