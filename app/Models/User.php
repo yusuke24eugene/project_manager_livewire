@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use App\Models\Project;
+use App\Models\Employees;
 
 class User extends Authenticatable
 {
@@ -63,5 +64,10 @@ class User extends Authenticatable
     public function projects()
     {
         return $this->hasMany(Project::class);
+    }
+
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
     }
 }

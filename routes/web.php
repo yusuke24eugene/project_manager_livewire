@@ -7,6 +7,8 @@ use App\Livewire\Projects\Create;
 use App\Livewire\Projects\Edit;
 use App\Livewire\Employees\Index;
 use App\Livewire\Employees\Create as CreateEmployee;
+use App\Livewire\Employees\Show as ShowEmployee;
+use App\Livewire\Employees\Edit as EditEmployee;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,6 +24,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Employees route
     Route::get('/employees', Index::class)->name('employees');
     Route::get('/create-employee', CreateEmployee::class)->name('create-employee');
+    Route::get('/employee/{id}', ShowEmployee::class)->name('employees.show');
+    Route::get('/edit-employee/{id}', EditEmployee::class)->name('employees.edit');
 });
 
 Route::middleware(['auth'])->group(function () {
