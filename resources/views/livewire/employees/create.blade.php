@@ -32,6 +32,7 @@
         <div class="flex flex-col">
             <label for="status" class="text-sm font-semibold text-gray-700">Status</label>
             <select type="text" wire:model="status" id="status" class="mt-1 p-3 border border-gray-300 rounded-lg @error('status') border-red-500 @enderror">
+                <option value="" selected>Select a status</option>
                 <option value="Contractual">Contractual</option>
                 <option value="Regular">Regular</option>
                 <option value="Resigned">Resigned</option>

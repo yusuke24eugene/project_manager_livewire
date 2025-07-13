@@ -9,6 +9,10 @@ use App\Livewire\Employees\Index;
 use App\Livewire\Employees\Create as CreateEmployee;
 use App\Livewire\Employees\Show as ShowEmployee;
 use App\Livewire\Employees\Edit as EditEmployee;
+use App\Livewire\Tasks\Index as IndexTasks;
+use App\Livewire\Tasks\Create as CreateTask;
+use App\Livewire\Tasks\Show as ShowTask;
+use App\Livewire\Tasks\Edit as EditTask;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,6 +30,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/create-employee', CreateEmployee::class)->name('create-employee');
     Route::get('/employee/{id}', ShowEmployee::class)->name('employees.show');
     Route::get('/edit-employee/{id}', EditEmployee::class)->name('employees.edit');
+
+    // Tasks route
+    Route::get('/tasks', IndexTasks::class)->name('tasks');
+    Route::get('/create-task', CreateTask::class)->name('create-task');
+    Route::get('/task/{id}', ShowTask::class)->name('tasks.show');
+    Route::get('/edit-task/{id}', EditTask::class)->name('tasks.edit');
 });
 
 Route::middleware(['auth'])->group(function () {

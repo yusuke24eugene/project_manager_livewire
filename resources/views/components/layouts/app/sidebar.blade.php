@@ -20,6 +20,10 @@
                     <flux:navlist.item icon="user" :href="route('employees')" :current="request()->routeIs('employees')" wire:navigate>{{ __('Employees List') }}</flux:navlist.item>
                     <flux:navlist.item icon="plus" :href="route('create-employee')" :current="request()->routeIs('create-employee')" wire:navigate>{{ __('Add Employee') }}</flux:navlist.item>
                 </flux:navlist.group>
+                <flux:navlist.group :heading="__('Tasks')" class="grid">
+                    <flux:navlist.item icon="list-bullet" :href="route('tasks')" :current="request()->routeIs('tasks')" wire:navigate>{{ __('Tasks List') }}</flux:navlist.item>
+                    <flux:navlist.item icon="plus" :href="route('create-task')" :current="request()->routeIs('create-task')" wire:navigate>{{ __('Add Task') }}</flux:navlist.item>
+                </flux:navlist.group>
             </flux:navlist>
 
             <flux:spacer />

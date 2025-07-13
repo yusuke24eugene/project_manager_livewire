@@ -16,7 +16,7 @@ class Create extends Component
     public $position;
 
     #[Rule('required|in:Contractual,Regular,Resigned,AWOL')]
-    public $status = 'Contractual';
+    public $status;
 
     public function save()
     {

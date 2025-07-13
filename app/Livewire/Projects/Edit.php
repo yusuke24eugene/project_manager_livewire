@@ -28,7 +28,7 @@ class Edit extends Component
 
     public function mount($id)
     {
-        $project = project::findOrFail($id);
+        $project = Project::findOrFail($id);
 
         $this->id = $project->id;
         $this->name = $project->name;
