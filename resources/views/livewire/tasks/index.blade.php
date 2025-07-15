@@ -11,6 +11,7 @@
                     <th class="px-4 py-2 border">Date of Start</th>
                     <th class="px-4 py-2 border">Deadline</th>
                     <th class="px-4 py-2 border">Status</th>
+                    <th class="px-4 py-2 border">Progress(%)</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,6 +62,11 @@
                                 @else
                                     <span class="text-red-500">Unknown</span>
                                 @endif
+                            </a>
+                        </td>
+                        <td class="px-4 py-2 border">
+                            <a href="{{ route('tasks.show', $task->id) }}" class="block w-full h-full">
+                                {{ $task->progress }}%
                             </a>
                         </td>
                     </tr>

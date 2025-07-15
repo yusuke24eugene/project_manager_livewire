@@ -26,6 +26,9 @@ class Edit extends Component
     #[Rule('required|in:todo,in_progress,done')]
     public string $status;
 
+    #[Rule('required|integer|min:0|max:100')]
+    public $progress;
+
     public function mount($id)
     {
         $project = Project::findOrFail($id);
@@ -36,6 +39,7 @@ class Edit extends Component
         $this->start = $project->start;
         $this->deadline = $project->deadline;
         $this->status = $project->status;
+        $this->progress = $project->progress;
     }
 
     public function update()
@@ -49,6 +53,7 @@ class Edit extends Component
             'start' => $this->start,
             'deadline' => $this->deadline,
             'status' => $this->status,
+            'progress' => $this->progress
         ]);
 
         $this->redirect('/dashboard', navigate: true);

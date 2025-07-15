@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('start');
             $table->date('deadline');
             $table->enum('status', ['todo', 'in_progress', 'done'])->default('todo');
+            $table->integer('progress')->default(0);
             $table->timestamps();
         });
     }

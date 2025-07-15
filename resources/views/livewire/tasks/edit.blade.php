@@ -60,15 +60,18 @@
             @enderror
         </div>
 
-        <!-- Start Date -->
-        <div class="flex flex-col">
-            <label for="start" class="text-sm font-semibold text-gray-700">Start Date</label>
-            <input type="date" wire:model="start" id="start" class="mt-1 p-3 border border-gray-300 rounded-lg @error('start') border-red-500 @enderror">
-            @error('start')
-                <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
-            @enderror
-        </div>
+        @if ($status == 'todo')
+            <!-- Start Date -->
+            <div class="flex flex-col">
+                <label for="start" class="text-sm font-semibold text-gray-700">Start Date</label>
+                <input type="date" wire:model="start" id="start" class="mt-1 p-3 border border-gray-300 rounded-lg @error('start') border-red-500 @enderror">
+                @error('start')
+                    <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                @enderror
+            </div>
+        @endif
 
+        @if ($status != 'done')
         <!-- Deadline -->
         <div class="flex flex-col">
             <label for="deadline" class="text-sm font-semibold text-gray-700">Deadline</label>
@@ -77,6 +80,7 @@
                 <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
             @enderror
         </div>
+        @endif
 
         <!-- Status -->
         <div class="flex flex-col">
@@ -90,6 +94,17 @@
                 <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
             @enderror
         </div>
+
+        <!-- Progress -->
+        @if ($status == 'in_progress')
+            <div class="flex flex-col">
+                <label for="progress" class="text-sm font-semibold text-gray-700">Progress(%)</label>
+                <input type="number" wire:model="progress" id="progress" class="mt-1 p-3 border border-gray-300 rounded-lg @error('progress') border-red-500 @enderror">
+                @error('progress')
+                    <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                @enderror
+            </div>
+        @endif
 
         <!-- Submit Button -->
         <div class="mt-4">

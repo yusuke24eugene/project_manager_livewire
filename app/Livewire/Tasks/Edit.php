@@ -34,6 +34,9 @@ class Edit extends Component
     #[Rule('required|in:todo,in_progress,done')]
     public string $status;
 
+    #[Rule('required|integer|min:0|max:100')]
+    public $progress;
+
     public $employees;
     public $projects;
 
@@ -56,6 +59,7 @@ class Edit extends Component
         $this->start = $task->start;
         $this->deadline = $task->deadline;
         $this->status = $task->status;
+        $this->progress = $task->progress;
         
         $this->projectName = $this->projects->firstWhere('id', $this->projectId)->name;
         $this->employeeName = $this->employees->firstWhere('id', $this->employeeId)->name;
@@ -74,6 +78,7 @@ class Edit extends Component
             'start' => $this->start,
             'deadline' => $this->deadline,
             'status' => $this->status,
+            'progress' => $this->progress
         ]);
 
         $this->redirect('/tasks', navigate: true);

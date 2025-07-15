@@ -9,7 +9,7 @@ use App\Models\User;
 
 class Task extends Model
 {
-    protected $fillable = ['title', 'description', 'start', 'deadline', 'status', 'project_id', 'employee_id', 'user_id'];
+    protected $fillable = ['title', 'description', 'start', 'deadline', 'status', 'project_id', 'employee_id', 'user_id', 'progress'];
 
     public function project()
     {
