@@ -71,6 +71,11 @@
                         </td>
                     </tr>
                 @endforeach
+
+                <!-- Livewire Pagination links -->
+                <div class="mb-4">
+                    {{ $tasks->links() }}
+                </div>
             </tbody>
         </table>
     </div>

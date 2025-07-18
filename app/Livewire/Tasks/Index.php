@@ -5,23 +5,23 @@ namespace App\Livewire\Tasks;
 use Livewire\Component;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
-    public $tasks;
-    public $employees;
-    public $projects;
-
-    public function mount()
-    {
-        $userId = Auth::id();
-        $this->tasks = Task::where('user_id', $userId)->get();
-        $this->projects = auth()->user()->projects;
-        $this->employees = auth()->user()->employees;
-    }
+    use WithPagination;
 
     public function render()
     {
-        return view('livewire.tasks.index');
+        $userId = Auth::id();
+
+        $tasks = Task::where('user_id', $userId)
+            ->orderByRaw("FIELD(status, 'todo', 'in_progress', 'done')")
+            ->paginate(10);
+
+        $projects = auth()->user()->projects;
+        $employees = auth()->user()->employees;
+
+        return view('livewire.tasks.index', compact(['tasks', 'projects', 'employees']));
     }
 }
