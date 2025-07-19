@@ -19,16 +19,16 @@ class Edit extends Component
     #[Rule('required|string|min:3|max:500')]
     public $description;
 
-    #[Rule('required|date|after_or_equal:today')]
+    #[Rule('date')]
     public $start;
 
-    #[Rule('required|date|after_or_equal:today|after_or_equal:start')]
+    #[Rule('date|after_or_equal:start')]
     public $deadline;
 
-    #[Rule('required')]
+    #[Rule('required|integer|min:1')]
     public $employeeId;
 
-    #[Rule('required')]
+    #[Rule('required|integer|min:1')]
     public $projectId;
 
     #[Rule('required|in:todo,in_progress,done')]
@@ -69,8 +69,8 @@ class Edit extends Component
     {
         $this->validate();
 
-        $project = Task::findOrFail($this->id);
-        $project->update([
+        $task = Task::findOrFail($this->id);
+        $task->update([
             'title' => $this->title,
             'project_id' => $this->projectId,
             'employee_id' => $this->employeeId,

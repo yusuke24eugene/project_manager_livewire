@@ -65,8 +65,21 @@
                             </a>
                         </td>
                         <td class="px-4 py-2 border">
-                            <a href="{{ route('tasks.show', $task->id) }}" class="block w-full h-full">
-                                {{ $task->progress }}%
+                            <a href="{{ route('projects.show', $project->id) }}" class="block w-full h-full">
+                                <div class="relative pt-1">
+                                    <div class="flex mb-2 items-center justify-between">
+                                        <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-teal-600">
+                                            {{ $task->progress }}%
+                                        </span>
+                                    </div>
+                                    <div class="flex mb-2 items-center justify-between">
+                                        <div class="w-full bg-gray-200 rounded-full">
+                                            <div class="bg-teal-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: {{ $task->progress }}%">
+                                                {{-- The progress percentage text is centered inside the bar --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </a>
                         </td>
                     </tr>

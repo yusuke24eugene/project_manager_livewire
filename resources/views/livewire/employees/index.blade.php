@@ -29,6 +29,11 @@
                         </td>
                     </tr>
                 @endforeach
+
+                <!-- Livewire Pagination links -->
+                <div class="mb-4">
+                    {{ $employees->links() }}
+                </div>
             </tbody>
         </table>
     </div>

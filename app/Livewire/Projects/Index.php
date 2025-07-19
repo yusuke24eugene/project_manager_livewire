@@ -16,6 +16,6 @@ class Index extends Component
             ->orderByRaw("FIELD(status, 'todo', 'in_progress', 'done')")
             ->paginate(10);
         
-        return view('livewire.projects.index', compact('projects'));
+        return view('livewire.projects.index', compact(['projects']));
     }
 }

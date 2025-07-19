@@ -16,7 +16,11 @@
                                     @else
                                         <span class="text-red-500">Unknown</span>
                                     @endif<br>
-            <strong>Owner:</strong> {{ $project->user->name ?? 'Unknown' }}
+            @if ($project->tasks()->count())
+                <strong>Tasks Completed:</strong> {{ $project->tasks()->where('status', 'done')->count() }}<br>
+                <strong>Total Tasks:</strong> {{ $project->tasks()->count() }}<br>
+            @endif
+            <strong>Manager:</strong> {{ $project->user->name ?? 'Unknown' }}
         </div>
     </div>
     <!-- Right side: Buttons (Edit/Delete) -->

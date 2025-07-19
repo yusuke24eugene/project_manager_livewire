@@ -23,10 +23,10 @@ class Create extends Component
     #[Rule('required|date|after_or_equal:today|after_or_equal:start')]
     public $deadline;
 
-    #[Rule('required')]
+    #[Rule('required|integer|min:1')]
     public $employeeId;
 
-    #[Rule('required')]
+    #[Rule('required|integer|min:1')]
     public $projectId;
 
     public $employees;

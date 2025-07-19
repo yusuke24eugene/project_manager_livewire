@@ -4,18 +4,18 @@ namespace App\Livewire\Employees;
 
 use Livewire\Component;
 use App\Models\Employee;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
-    public $employees;
-
-    public function mount()
-    {
-        $this->employees = auth()->user()->employees;
-    }
+    use WithPagination;
 
     public function render()
     {
-        return view('livewire.employees.index');
+        $employees = auth()->user()->employees()
+            ->orderByRaw("FIELD(status, 'Regular', 'Contractual', 'Resigned', 'AWOL')")
+            ->paginate(10);
+
+        return view('livewire.employees.index', compact('employees'));
     }
 }
